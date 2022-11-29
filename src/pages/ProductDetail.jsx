@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, Carousel, Col, Container, Row } from "react-bootstrap";
+import { Button, Card, Carousel, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getProductThunk } from "../store/slices/products.eslice";
@@ -81,8 +81,27 @@ const ProductDetail = () => {
         <Row xs={1} md={3} lg={5} className="g-4">
           {relatedProducts.map((productItem) => (
             <Col key={productItem.id}>
-              <Card>
-                <Link
+              <Card style={{ background: "white", height: "100%" }} className="grow">
+                {/* <Card> */}
+                <Link to={`/product/${productItem.id}`} style={{ textDecoration: "none" }}>
+                  <Card.Img variant="top" src={productItem.productImgs[0]} style={{ height: "185px", objectFit: "contain" }} className='my-4' />
+                  <Card.Body>
+                    <Card.Title>{productItem.title}</Card.Title>
+                    <Card.Text>
+                      <span>Price:</span>
+                      <br />
+                      <span style={{ marginLeft: "10px" }}><b>${productItem.price}</b></span>
+                    </Card.Text>
+                    <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+                      <Button variant="danger" style={{
+                        position: "absolute",
+                        bottom: "12px"
+                      }}><i className="fa-solid fa-cart-plus"></i></Button>
+
+                    </div>
+                  </Card.Body>
+                </Link>
+                {/* <Link
                   to={`/product/${productItem.id}`}
                   style={{
                     textDecoration: "none",
@@ -113,7 +132,7 @@ const ProductDetail = () => {
                       </span>
                     </Card.Text>
                   </Card.Body>
-                </Link>
+                </Link> */}
               </Card>
             </Col>
           ))}
