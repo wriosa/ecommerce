@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { filterNameThunk, filterProducThunk, getProductThunk } from '../store/slices/products.eslice';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
+import '../App'
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const Home = () => {
                     <ListGroup>
                         {categoryList.map(category => (
                             // <Button onClick={() => dispatch(filterProducThunk(category.id))}>{category.name}</Button>
-                            <ListGroup.Item variant="success" onClick={() => dispatch(filterProducThunk(category.id))} style={{ cursor: "pointer" }}>{category.name}</ListGroup.Item>
+                            <ListGroup.Item key={category.id} variant="success" onClick={() => dispatch(filterProducThunk(category.id))} style={{ cursor: "pointer" }} className="border">{category.name}</ListGroup.Item>
                         ))}
                     </ListGroup>
 
@@ -39,7 +40,7 @@ const Home = () => {
                             placeholder="Search by name"
                             aria-label="Recipient's username"
                             aria-describedby="basic-addon2"
-                            value={inputSearch}
+                            value={inputSearch.toUpperCase()}
                             onChange={e => setInputSearch(e.target.value)}
                         />
                         <Button variant="outline-secondary" onClick={() => dispatch(filterNameThunk(inputSearch))}>
@@ -52,8 +53,8 @@ const Home = () => {
                     {/* nuevo */}
                     <Row xs={1} md={3} className="g-4">
                         {produ?.map(product => (
-                            <Col>
-                                <Card style={{ background: "white"}}>
+                            <Col key={product.id}>
+                                <Card style={{ background: "white", height: "100%" }} className="grow">
                                     <Link to={`/product/${product.id}`} style={{ textDecoration: "none" }}>
                                         <Card.Img variant="top" src={product.productImgs[0]} style={{ height: "185px", objectFit: "contain" }} className='my-4' />
                                         <Card.Body>
@@ -61,10 +62,13 @@ const Home = () => {
                                             <Card.Text>
                                                 <span>Price:</span>
                                                 <br />
-                                                <span><b>${product.price}</b></span>
-                                            </Card.Text>                                            
+                                                <span style={{marginLeft: "10px"}}><b>${product.price}</b></span>
+                                            </Card.Text>
                                             <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                                                <Button variant="danger"><i class="fa-solid fa-cart-plus"></i></Button>
+                                                <Button variant="danger" style={{
+                                                    position: "absolute",
+                                                    bottom: "12px"
+                                                }}><i className="fa-solid fa-cart-plus"></i></Button>
                                             </div>
                                         </Card.Body>
                                     </Link>
