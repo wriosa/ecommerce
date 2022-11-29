@@ -28,7 +28,7 @@ const Home = () => {
                     <ListGroup>
                         {categoryList.map(category => (
                             // <Button onClick={() => dispatch(filterProducThunk(category.id))}>{category.name}</Button>
-                            <ListGroup.Item variant="success" onClick={() => dispatch(filterProducThunk(category.id))} style={{ cursor: "pointer" }}>{category.name}</ListGroup.Item>
+                            <ListGroup.Item key={category.id} variant="success" onClick={() => dispatch(filterProducThunk(category.id))} style={{ cursor: "pointer" }}>{category.name}</ListGroup.Item>
                         ))}
                     </ListGroup>
 
@@ -52,7 +52,7 @@ const Home = () => {
                     {/* nuevo */}
                     <Row xs={1} md={3} className="g-4">
                         {produ?.map(product => (
-                            <Col>
+                            <Col key={product.id}>
                                 <Card style={{ background: "white"}}>
                                     <Link to={`/product/${product.id}`} style={{ textDecoration: "none" }}>
                                         <Card.Img variant="top" src={product.productImgs[0]} style={{ height: "185px", objectFit: "contain" }} className='my-4' />
@@ -64,7 +64,7 @@ const Home = () => {
                                                 <span><b>${product.price}</b></span>
                                             </Card.Text>                                            
                                             <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                                                <Button variant="danger"><i class="fa-solid fa-cart-plus"></i></Button>
+                                                <Button variant="danger"><i className="fa-solid fa-cart-plus"></i></Button>
                                             </div>
                                         </Card.Body>
                                     </Link>
