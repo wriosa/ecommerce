@@ -56,6 +56,7 @@ const Home = () => {
                                 <Card style={{ background: "white", height: "100%" }} className="grow">
                                     <Link to={`/product/${product.id}`} style={{ textDecoration: "none" }}>
                                         <Card.Img variant="top" src={product.productImgs[0]} style={{ height: "185px", objectFit: "contain" }} className='my-4' />
+                                        <hr />
                                         <Card.Body>
                                             <Card.Title>{product.title}</Card.Title>
                                             <Card.Text>
