@@ -8,7 +8,12 @@ const Purchases = () => {
     var opciones = { year: 'numeric', month: 'short', day: 'numeric' };
     const dispatch = useDispatch();
     const purchases = useSelector(state => state.purchases)
-    const [date, setDate] = useState("")
+    const dat = purchases.map(purchase => purchase.createdAt);
+    console.log(dat)
+    const date = purchases.map(purchase => new Date(purchase.createdAt))
+    console.log(date)
+    const newDate = date[0]?.toLocaleDateString()
+    console.log(newDate)
     useEffect(() => {
         dispatch(getPurchasesThunk())
     }, [])
