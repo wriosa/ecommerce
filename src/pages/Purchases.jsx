@@ -8,15 +8,15 @@ const Purchases = () => {
     var opciones = { year: 'numeric', month: 'short', day: 'numeric' };
     const dispatch = useDispatch();
     const purchases = useSelector(state => state.purchases)
-    const [date, setDate]=useState("")
+    const [date, setDate] = useState("")
     useEffect(() => {
         dispatch(getPurchasesThunk())
     }, [])
     return (
         <div>
-            <Container style={{maxWidth: "790px"}}>
-            <h1>My Purchases</h1>
-            {/* <ul>
+            <Container style={{ maxWidth: "790px" }}>
+                <h1>My Purchases</h1>
+                {/* <ul>
                 {
                     purchases.map(purchase => (
 
@@ -37,27 +37,27 @@ const Purchases = () => {
                     ))
                 }
             </ul> */}
-            {purchases.map(purchase => (
-                    
-                <Card style={{ background: "#dee2e6", marginBottom: "20px", color:"black" }}>
+                {purchases.map(purchase => (
 
-                    <Card.Header key={purchase.id}>{purchase.createdAt}</Card.Header>
-                    {purchase.cart.products.map(product => (
-                        <Card.Body>
-                            {/* <Card.Title>{product.title}</Card.Title> */}
-                            <Link to={`/product/${product.id}`} key={product.id} style={{ textDecoration: "none" }}>
-                            <Card.Text style={{ display: "flex", justifyContent: "space-around" }}>
-                                <div style={{ width: "40%" }}>{product.title}</div>
-                                <div>{product.productsInCart.quantity}</div>
-                                <div>${product.price}</div>
-                            </Card.Text>
-                            </Link>
-                        </Card.Body>
-                    ))}
-                </Card>
+                    <Card style={{ background: "#dee2e6", marginBottom: "20px", color: "black" }}>
 
-            ))
-            }
+                        <Card.Header key={purchase.id}>{purchase.createdAt}</Card.Header>
+                        {purchase.cart.products.map(product => (
+                            <Card.Body>
+                                {/* <Card.Title>{product.title}</Card.Title> */}
+                                <Link to={`/product/${product.id}`} key={product.id} style={{ textDecoration: "none" }}>
+                                    <Card.Text style={{ display: "flex", justifyContent: "space-around" }}>
+                                        <div style={{ width: "40%" }}>{product.title}</div>
+                                        <div>{product.productsInCart.quantity}</div>
+                                        <div style={{ width: "17%" }}>${product.price}</div>
+                                    </Card.Text>
+                                </Link>
+                            </Card.Body>
+                        ))}
+                    </Card>
+
+                ))
+                }
             </Container>
         </div>
     );
