@@ -1,0 +1,14 @@
+/* .detailProducts {
+    display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.three {
+    grid-column: 2 / 2;
+    grid-row: 2;
+  } */
+
+
+  

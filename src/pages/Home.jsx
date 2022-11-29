@@ -41,8 +41,7 @@ const Home = () => {
                             aria-label="Recipient's username"
                             aria-describedby="basic-addon2"
                             value={inputSearch.toUpperCase()}
-                            onChange={e => setInputSearch(e.target.value)}
-                        />
+                            onChange={e => setInputSearch(e.target.value)}/>
                         <Button variant="outline-secondary" onClick={() => dispatch(filterNameThunk(inputSearch))}>
                             Search
                         </Button>
@@ -69,6 +68,7 @@ const Home = () => {
                                                     position: "absolute",
                                                     bottom: "12px"
                                                 }}><i className="fa-solid fa-cart-plus"></i></Button>
+
                                             </div>
                                         </Card.Body>
                                     </Link>
