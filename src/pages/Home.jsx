@@ -66,7 +66,8 @@ const Home = () => {
                                             <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                                                 <Button variant="danger" style={{
                                                     position: "absolute",
-                                                    bottom: "12px"
+                                                    bottom: "12px",
+                                                    right: "12px"
                                                 }}><i className="fa-solid fa-cart-plus"></i></Button>
 
                                             </div>

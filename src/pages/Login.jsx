@@ -11,7 +11,11 @@ const Login = () => {
     const submit = (data) => {
         // console.log(data);
         axios.post(`https://e-commerce-api.academlo.tech/api/v1/users/login`, data)
-        .then(res => navigate("/"))
+        .then(res => {
+            navigate("/")  
+            console.log(res) 
+            localStorage.setItem("token", res.data.data.token)
+    })
         .catch(error =>{
             if(error.response?.status === 404){
                 alert("Credenciales incorrectas")
