@@ -80,7 +80,7 @@ const ProductDetail = () => {
         <h2>Related Products: </h2>
         <Row xs={1} md={3} lg={5} className="g-4">
           {relatedProducts.map((productItem) => (
-            <Col key={productItem.id}>
+            <Col key={productItem.id} lg={4}>
               <Card style={{ background: "white", height: "100%" }} className="grow">
                 {/* <Card> */}
                 <Link to={`/product/${productItem.id}`} style={{ textDecoration: "none" }}>

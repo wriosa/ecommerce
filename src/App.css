@@ -52,7 +52,7 @@
   z-index: 100;
 }
 
-.border{
+.border {
   transition: .5s ease;
 }
 
@@ -60,6 +60,16 @@
   box-shadow: 0 0 0 10px #4e628f;
   transition: .5s ease;
   z-index: 100;
+}
+
+.productsInCart {
+  border: 1px solid grey;
+  margin: 0 auto;
+  max-width: 65px;
+  text-align: center;
+  width: 23%;
+  padding: 0 10px;
+  height: 30px;
 }
 
 @keyframes lds-ripple {
