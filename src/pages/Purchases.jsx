@@ -5,15 +5,19 @@ import { Link } from 'react-router-dom';
 import { getPurchasesThunk } from '../store/slices/purchases.slice';
 
 const Purchases = () => {
-    var opciones = { year: 'numeric', month: 'short', day: 'numeric' };
+    var opciones = { year: 'numeric', month: 'long', weekday: 'long', day: "numeric" };
     const dispatch = useDispatch();
     const purchases = useSelector(state => state.purchases)
-    const dat = purchases.map(purchase => purchase.createdAt);
-    console.log(dat)
-    const date = purchases.map(purchase => new Date(purchase.createdAt))
-    console.log(date)
-    const newDate = date[0]?.toLocaleDateString()
-    console.log(newDate)
+    // const dat = purchases.map(purchase => purchase.createdAt);
+    // console.log(dat)
+    // const date = purchases.map(purchase => new Date(purchase.createdAt))
+    // console.log(date)
+    // // const newDate = date[0]?.toLocaleDateString("es", opciones)
+    // const newDate = date.map(data => data.toLocaleDateString("es", opciones))
+    // for (const dat of newDate) {
+    //     console.log(dat)
+    // }
+    // console.log(newDate)
     useEffect(() => {
         dispatch(getPurchasesThunk())
     }, [])
@@ -42,8 +46,8 @@ const Purchases = () => {
                     ))
                 }
             </ul> */}
-                {purchases.map(purchase => (
 
+                {purchases.map(purchase => (
                     <Card style={{ background: "#dee2e6", marginBottom: "20px", color: "black" }}>
 
                         <Card.Header key={purchase.id}>{purchase.createdAt}</Card.Header>
