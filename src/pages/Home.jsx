@@ -40,7 +40,7 @@ const Home = () => {
                             placeholder="Search by name"
                             aria-label="Recipient's username"
                             aria-describedby="basic-addon2"
-                            value={inputSearch.toUpperCase()}
+                            value={inputSearch}
                             onChange={e => setInputSearch(e.target.value)}/>
                         <Button variant="outline-secondary" onClick={() => dispatch(filterNameThunk(inputSearch))}>
                             Search
