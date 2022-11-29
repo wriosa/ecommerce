@@ -76,22 +76,43 @@ const ProductDetail = () => {
       <br />
       <Row>
         {/* <div className="three sm={12}"> */}
-        <hr className="my-12" /><h2>Related Products: </h2>
+        <hr className="my-12" />
+        <h2>Related Products: </h2>
         <Row xs={1} md={3} lg={5} className="g-4">
-          
           {relatedProducts.map((productItem) => (
             <Col key={productItem.id}>
               <Card>
-              <Link to={`/product/${productItem.id}`} style={{textDecoration: "none", height: 330,objectFit: "contain"}}>
-                <Card.Img 
-                  varian="top"
-                  src={productItem?.productImgs[0]}
-                  alt={productItem?.productImgs[0].name}
-                  style={{ height: 200, objectFit: "contain", backgroundColor: "#fff" }}
-                />
-                <Card.Body>
-                  <Card.Title> <h3>{productItem?.title}</h3> </Card.Title>
-                </Card.Body>
+                <Link
+                  to={`/product/${productItem.id}`}
+                  style={{
+                    textDecoration: "none",
+                    height: 350,
+                    objectFit: "contain", backgroundColor: "#fff"
+                  }}
+                >
+                  <Card.Img
+                    varian="top"
+                    src={productItem?.productImgs[0]}
+                    alt={productItem?.productImgs[0].name}
+                    style={{
+                      height: 200,
+                      objectFit: "contain",
+                      backgroundColor: "#fff",
+                    }}
+                  />
+                  <Card.Body>
+                    <Card.Title>
+                      {" "}
+                      <h3>{productItem?.title}</h3>{" "}
+                    </Card.Title>
+                    <Card.Text>
+                      <span>Price:</span>
+                      <br />
+                      <span>
+                        <b>${productItem.price}</b>
+                      </span>
+                    </Card.Text>
+                  </Card.Body>
                 </Link>
               </Card>
             </Col>
