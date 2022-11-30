@@ -34,13 +34,13 @@ const ProductDetail = () => {
   };
 
   console.log(relatedProducts);
-const[rate, setRate]= useState("")
-  const addToCart=()=>{
+  const [rate, setRate] = useState("");
+  const addToCart = () => {
     const product = {
       product: productsFound.id,
-      rate:rate
-    }
-  }
+      rate: rate,
+    };
+  };
   return (
     <Container>
       <Row>
@@ -70,14 +70,17 @@ const[rate, setRate]= useState("")
               {" "}
               <strong>${productsFound?.price}</strong>{" "}
             </h2>
-            <h1>{counter}</h1>
             <button className="btn btn-primary" onClick={incrementCounter}>
               +
-            </button>
-            <button className="btn btn-primary" onClick={decrementCounter}>
+            </button>{" "}
+            <input style={{width: "40px", textAlign: "center"}}
+              type="number"
+              value={counter}
+              onChange={(e) => setRate(e.target.value)}
+            />{" "}
+            <button style={{marginRight: "50px"}}className="btn btn-primary" onClick={decrementCounter}>
               -
             </button>
-            <input type="text" value={rate} onChange={(e) => setRate(e.target.value)} />
             <Button onClick={addToCart}>Add to cart</Button>
           </div>
         </Col>
@@ -90,23 +93,40 @@ const[rate, setRate]= useState("")
         <Row xs={1} md={3} lg={5} className="g-4">
           {relatedProducts.map((productItem) => (
             <Col key={productItem.id} lg={4}>
-              <Card style={{ background: "white", height: "100%" }} className="grow">
+              <Card
+                style={{ background: "white", height: "100%" }}
+                className="grow"
+              >
                 {/* <Card> */}
-                <Link to={`/product/${productItem.id}`} style={{ textDecoration: "none" }}>
-                  <Card.Img variant="top" src={productItem.productImgs[0]} style={{ height: "185px", objectFit: "contain" }} className='my-4' />
+                <Link
+                  to={`/product/${productItem.id}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <Card.Img
+                    variant="top"
+                    src={productItem.productImgs[0]}
+                    style={{ height: "185px", objectFit: "contain" }}
+                    className="my-4"
+                  />
                   <Card.Body>
                     <Card.Title>{productItem.title}</Card.Title>
                     <Card.Text>
                       <span>Price:</span>
                       <br />
-                      <span style={{ marginLeft: "10px" }}><b>${productItem.price}</b></span>
+                      <span style={{ marginLeft: "10px" }}>
+                        <b>${productItem.price}</b>
+                      </span>
                     </Card.Text>
                     <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                      <Button variant="danger" style={{
-                        position: "absolute",
-                        bottom: "12px"
-                      }}><i className="fa-solid fa-cart-plus"></i></Button>
-
+                      <Button
+                        variant="danger"
+                        style={{
+                          position: "absolute",
+                          bottom: "12px",
+                        }}
+                      >
+                        <i className="fa-solid fa-cart-plus"></i>
+                      </Button>
                     </div>
                   </Card.Body>
                 </Link>
