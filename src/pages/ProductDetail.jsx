@@ -34,6 +34,13 @@ const ProductDetail = () => {
   };
 
   console.log(relatedProducts);
+const[rate, setRate]= useState("")
+  const addToCart=()=>{
+    const product = {
+      product: productsFound.id,
+      rate:rate
+    }
+  }
   return (
     <Container>
       <Row>
@@ -70,6 +77,8 @@ const ProductDetail = () => {
             <button className="btn btn-primary" onClick={decrementCounter}>
               -
             </button>
+            <input type="text" value={rate} onChange={(e) => setRate(e.target.value)} />
+            <Button onClick={addToCart}>Add to cart</Button>
           </div>
         </Col>
       </Row>
