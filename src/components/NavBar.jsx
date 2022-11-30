@@ -9,7 +9,7 @@ import CartSidebars from './CartSidebars';
 
 
 const NavBar = () => {
-    const [show, setShow] = useState(true);
+    const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
