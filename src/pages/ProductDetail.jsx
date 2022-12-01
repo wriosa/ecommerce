@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Card, Carousel, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import { createCartThunk } from "../store/slices/cart.slice";
 import { getProductThunk } from "../store/slices/products.eslice";
 import "./css/ProductDetail.css";
 
@@ -34,12 +35,14 @@ const ProductDetail = () => {
   };
 
   console.log(relatedProducts);
-  const [rate, setRate] = useState("");
+  const [quantity, setQuantity] = useState("");
   const addToCart = () => {
     const product = {
-      product: productsFound.id,
-      rate: rate,
+      id: productsFound.id,
+      quantity: counter,
     };
+    console.log(product)
+    dispatch(createCartThunk(product))
   };
   return (
     <Container>
@@ -76,7 +79,7 @@ const ProductDetail = () => {
             <input style={{width: "40px", textAlign: "center"}}
               type="number"
               value={counter}
-              onChange={(e) => setRate(e.target.value)}
+              onChange={(e) => setQuantity(e.target.value)}
             />{" "}
             <button style={{marginRight: "50px"}}className="btn btn-primary" onClick={decrementCounter}>
               -

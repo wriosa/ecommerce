@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Offcanvas } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import ProductDetail from "../pages/ProductDetail";
-import { getCartThunk } from "../store/slices/cart.slice";
+import { checkoutCar, getCartThunk } from "../store/slices/cart.slice";
 import "./css/CartSidebars.css";
 
 const CartSidebars = ({ show, handleClose }) => {
@@ -13,6 +13,11 @@ const CartSidebars = ({ show, handleClose }) => {
   }, []);
 
   const cart = useSelector((state) => state.cart);
+
+  const subTotal= cart.map((product) => ((product.price)*(product.productsInCart.quantity)))
+  console.log(subTotal)
+  const total = subTotal.reduce((a, b) => a + b, 0)
+  console.log(total)
   return (
     // <div className="minimalist-scrollbar">
     <Offcanvas
@@ -33,19 +38,20 @@ const CartSidebars = ({ show, handleClose }) => {
             <span className="spanTitle">{product.title}</span>
 
             <label className="label" type="text">
-              1
+              {product.productsInCart.quantity}
             </label>
-            <div className="subTotal">Total: 1099</div>
+            <div className="subTotal">Total: ${(product.price)*(product.productsInCart.quantity)}</div>
           </div>
         ))}
       </Offcanvas.Body>{" "}
       <div className="total">
-        Total: <span className="spanTotal">$9999</span>{" "}
+        Total: <span className="spanTotal">${total}</span>{" "}
       </div>
-      <div className="btn-buy">
+      <div className="btn-buy" style={{padding: "12px 20px"}}>
         <button
           className="btn btn-primary btn-lg btn-block"
           style={{ width: "100%" }}
+          onClick={()=> dispatch(checkoutCar())}
         >
           Checkout
         </button>
