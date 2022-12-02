@@ -127,6 +127,7 @@ const ProductDetail = () => {
                         style={{
                           position: "absolute",
                           bottom: "12px",
+                          right: "12px"
                         }}
                       >
                         <i className="fa-solid fa-cart-plus"></i>
