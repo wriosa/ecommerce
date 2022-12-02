@@ -29,7 +29,8 @@ export const createCartThunk = (productToCart) => (dispatch) => {
         getConfig()
       )
       .then(() => dispatch(getCartThunk()))
-      .finally(() => dispatch(setIsLoading(false)));
+      .finally(() => dispatch(setIsLoading(false)))
+      .catch(error => console.log(error.response.data))
   };
   export const checkoutCar = () => (dispatch) => {
       dispatch(setIsLoading(true));

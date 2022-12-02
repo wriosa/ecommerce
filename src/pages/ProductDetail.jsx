@@ -74,7 +74,7 @@ const ProductDetail = () => {
               {" "}
               <strong>${productsFound?.price}</strong>{" "}
             </h2>
-            <button className="btn btn-primary" onClick={decrementCounter}>
+            <button className="btn btn-primary" onClick={decrementCounter} disabled={counter === 1}>
               -
             </button>{" "}
             <input style={{width: "40px", textAlign: "center"}}

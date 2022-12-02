@@ -8,8 +8,14 @@ export const productsSlice = createSlice({
     reducers: {
         setProducts: (state, action) => {
             return action.payload
-        }
+        },
+        filterName: (state, action) => {
+            const inputSearch = action.payload;
+            return state.filter(product => 
+                product.title.toLowerCase().includes(inputSearch.toLowerCase())
+            );
     }
+}
 })
 
 export const getProductThunk = () => dispatch => {
@@ -32,6 +38,6 @@ export const filterNameThunk = (inputSearch) => (dispatch) => {
 }
 
 
-export const {setProducts } = productsSlice.actions;
+export const {setProducts, filterName } = productsSlice.actions;
 
 export default productsSlice.reducer;

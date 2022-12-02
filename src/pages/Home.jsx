@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Collapse, ListGroup, ListGroupItem, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { filterNameThunk, filterProducThunk, getProductThunk } from '../store/slices/products.eslice';
+import { filterName, filterNameThunk, filterProducThunk, getProductThunk } from '../store/slices/products.eslice';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import '../App'
@@ -29,16 +29,17 @@ const Home = () => {
     //     })
     //     setInputSearch(filtered)
     // }
-    // console.log(categoryList)
 
-    // const addToCar = () => {
-    //     const produc = {
-    //       id: value,
-    //       quantity: "1",
-    //     };
-    //     console.log(produc)
-    //     dispatch(createCartThunk(produc))
-    // }
+    const addToCar = (id) => {
+        const produc = {
+          id,
+          quantity: "1",
+        };
+        
+        dispatch(createCartThunk(produc))
+    }
+
+    
     return (
         <div>
             {/* nuevo */}
@@ -70,7 +71,7 @@ const Home = () => {
                             aria-describedby="basic-addon2"
                             value={inputSearch}
                             onChange={e => setInputSearch(e.target.value)} />
-                        <Button variant="outline-secondary" onClick={() => dispatch(filterNameThunk(inputSearch))}>
+                        <Button variant="outline-secondary" onClick={() => dispatch(filterName(inputSearch))}>
                             Search
                         </Button>
                     </InputGroup>
@@ -106,7 +107,7 @@ const Home = () => {
                                         position: "absolute",
                                         bottom: "12px",
                                         right: "12px"
-                                    }}><i className="fa-solid fa-cart-plus"></i></Button>
+                                    }} onClick={()=>addToCar(product.id)}><i className="fa-solid fa-cart-plus"></i></Button>
                                 </Card>
                             </Col>
                         ))}
