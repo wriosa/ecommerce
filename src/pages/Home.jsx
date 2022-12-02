@@ -22,11 +22,18 @@ const Home = () => {
             .then(res => setCategoryList(res.data.data?.categories))
     }, [])
     const [open, setOpen] = useState(false);
+    // const filter = (value) => {
+    //     const filtered = produ.filter(item =>{
+    //         const name = `${item.title}`
+    //         return name.toLowerCase().includes(value.toLowerCase())
+    //     })
+    //     setInputSearch(filtered)
+    // }
     // console.log(categoryList)
 
     // const addToCar = () => {
     //     const produc = {
-    //       id: produ.id,
+    //       id: value,
     //       quantity: "1",
     //     };
     //     console.log(produc)
@@ -45,14 +52,14 @@ const Home = () => {
                         Filter by category
                     </Button>
                     <Collapse in={open}>
-                    <ListGroup>
-                        {categoryList.map(category => (
-                            // <Button onClick={() => dispatch(filterProducThunk(category.id))}>{category.name}</Button>
-                            <ListGroup.Item key={category.id} variant="success" onClick={() => dispatch(filterProducThunk(category.id))} style={{ cursor: "pointer" }} className="border">{category.name}</ListGroup.Item>
-                        ))}
-                    </ListGroup>
+                        <ListGroup>
+                            {categoryList.map(category => (
+                                // <Button onClick={() => dispatch(filterProducThunk(category.id))}>{category.name}</Button>
+                                <ListGroup.Item key={category.id} variant="success" onClick={() => dispatch(filterProducThunk(category.id))} style={{ cursor: "pointer" }} className="border">{category.name}</ListGroup.Item>
+                            ))}
+                        </ListGroup>
                     </Collapse>
-                   
+
 
                 </Col>
                 <Col lg={9}>
@@ -110,6 +117,6 @@ const Home = () => {
 
         </div>
     );
-};
+    };
 
-export default Home;
+    export default Home;

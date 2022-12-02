@@ -25,7 +25,7 @@ const ProductDetail = () => {
       productItem.id !== productsFound.id
   );
 
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(1);
 
   const incrementCounter = () => {
     setCounter(counter + 1);
@@ -74,16 +74,16 @@ const ProductDetail = () => {
               {" "}
               <strong>${productsFound?.price}</strong>{" "}
             </h2>
-            <button className="btn btn-primary" onClick={incrementCounter}>
-              +
+            <button className="btn btn-primary" onClick={decrementCounter}>
+              -
             </button>{" "}
             <input style={{width: "40px", textAlign: "center"}}
               type="number"
               value={counter}
               onChange={(e) => setQuantity(e.target.value)}
             />{" "}
-            <button style={{marginRight: "50px"}}className="btn btn-primary" onClick={decrementCounter}>
-              -
+            <button style={{marginRight: "50px"}}className="btn btn-primary" onClick={incrementCounter}>
+              +
             </button>
             <Button onClick={addToCart}>Add to cart</Button>
           </div>
