@@ -18,6 +18,7 @@ const ProductDetail = () => {
   const productsFound = productsList.find(
     (productItem) => productItem.id === Number(id)
   );
+  console.log(productsFound)
   const relatedProducts = productsList.filter(
     (productItem) =>
       productItem.category.id === productsFound.category.id &&
@@ -41,7 +42,7 @@ const ProductDetail = () => {
       id: productsFound.id,
       quantity: counter,
     };
-    console.log(product)
+    // console.log(product)
     dispatch(createCartThunk(product))
   };
   return (

@@ -5,19 +5,11 @@ import { Link } from 'react-router-dom';
 import { getPurchasesThunk } from '../store/slices/purchases.slice';
 
 const Purchases = () => {
-    var opciones = { year: 'numeric', month: 'long', weekday: 'long', day: "numeric" };
+    
     const dispatch = useDispatch();
     const purchases = useSelector(state => state.purchases)
-    // const dat = purchases.map(purchase => purchase.createdAt);
-    // console.log(dat)
-    // const date = purchases.map(purchase => new Date(purchase.createdAt))
-    // console.log(date)
-    // // const newDate = date[0]?.toLocaleDateString("es", opciones)
-    // const newDate = date.map(data => data.toLocaleDateString("es", opciones))
-    // for (const dat of newDate) {
-    //     console.log(dat)
-    // }
-    // console.log(newDate)
+   
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     useEffect(() => {
         dispatch(getPurchasesThunk())
     }, [])
@@ -48,9 +40,8 @@ const Purchases = () => {
             </ul> */}
 
                 {purchases.map(purchase => (
-                    <Card style={{ background: "#dee2e6", marginBottom: "20px", color: "black" }}>
-
-                        <Card.Header key={purchase.id}>{purchase.createdAt}</Card.Header>
+                    <Card style={{ background: "#dee2e6", marginBottom: "20px", color: "black" }} key={purchase.id}>
+                        <Card.Header >{new Date(purchase.createdAt).toLocaleDateString(undefined, options)}</Card.Header>
                         {purchase.cart.products.map(product => (
                             <Card.Body>
                                 {/* <Card.Title>{product.title}</Card.Title> */}

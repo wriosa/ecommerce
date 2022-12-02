@@ -19,12 +19,12 @@ const NavBar = () => {
                 <Container>
                     <Navbar.Brand as={Link} to="/">E-commerce</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
+                    <Navbar.Collapse id="basic-navbar-nav" style={{justifyContent: "end"}}>
 
-                        <Nav>
-                            <Nav.Link as={Link} to="/login">LogIn</Nav.Link>
-                            <Nav.Link as={Link} to="/purchases">Purchases</Nav.Link>
-                            <Nav.Link onClick={handleShow}>Cart</Nav.Link>
+                        <Nav >
+                            <Nav.Link as={Link} to="/login"><i className="fa-solid fa-right-to-bracket fa-xl"></i></Nav.Link>
+                            <Nav.Link as={Link} to="/purchases"><i className="fa-solid fa-basket-shopping fa-xl"></i></Nav.Link>
+                            <Nav.Link onClick={handleShow}><i className="fa-solid fa-cart-shopping fa-xl"></i></Nav.Link>
                         </Nav>
 
                     </Navbar.Collapse>

@@ -105,3 +105,8 @@
     opacity: 0;
   }
 }
+@media screen and (max-width: 992px) {
+  #basic-navbar-nav {
+    text-align: center;
+  }
+}

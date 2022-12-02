@@ -15,9 +15,9 @@ const CartSidebars = ({ show, handleClose }) => {
   const cart = useSelector((state) => state.cart);
 
   const subTotal= cart.map((product) => ((product.price)*(product.productsInCart.quantity)))
-  console.log(subTotal)
+  // console.log(subTotal)
   const total = subTotal.reduce((a, b) => a + b, 0)
-  console.log(total)
+  // console.log(total)
   return (
     // <div className="minimalist-scrollbar">
     <Offcanvas
